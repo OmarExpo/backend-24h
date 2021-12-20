@@ -36,4 +36,47 @@ public class CandidateController {
         return candidateService.getCandidate(id);
     }
 
+    @PutMapping("/updateCandidate")
+    public Candidate updateCandidate(@RequestBody Candidate candidate){
+        Candidate existingCandidate = candidateService.getCandidate(candidate.getId());
+
+        existingCandidate.setElection(candidate.getElection());
+        existingCandidate.setFirstName(candidate.getFirstName());
+        existingCandidate.setLastName(candidate.getLastName());
+
+        candidateService.addSingleCandidate(existingCandidate);
+
+        return existingCandidate;
+    }
+
+    @DeleteMapping("/deleteCandidate")
+    public String deleteCandidate(@PathVariable Integer id){
+        return candidateService.removeCandidate(id);
+    }
+
+
+
+
+
+    /*
+    @PutMapping("/updateElection")
+    public Election updateElection(@RequestBody Election election){
+        Election existingElection = service.getElection(election.getId());
+
+        existingElection.setElectionName(election.getElectionName());
+        existingElection.setCandidates(election.getCandidates());
+        existingElection.setParties(election.getParties());
+
+        service.addElection(existingElection);
+
+        return existingElection;
+    }
+
+    @DeleteMapping("/endElection")
+    public String deleteElection(@PathVariable Integer id){
+        return service.removeElection(id);
+    }
+
+     */
+
 }
