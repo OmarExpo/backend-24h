@@ -6,9 +6,8 @@ REST / Spring Boot / JPA / MySQL
 
 This is school project based on Java, Spring Framework that offers a RESTful APIs for voting System.
 
-Voting system for deciding that allow to create / edit / delete Candidates and all the other CRUD operations.
-
-Here you can find task and project requirements graduation.md
+Voting system that allows to fecth / create / edit / delete Candidates (plus Party & VotingSystem APIs as well), in short perform all CRUD operations.
+ 
 <br/>
 Technology stack:
 
@@ -26,6 +25,7 @@ JUnit
 
 <br/>
 How to use this program
+<br/>
 
 Clone a repository: git clone https://github.com/OmarExpo/backend-votingSystemApp 2. Open the project using the IDE
 
