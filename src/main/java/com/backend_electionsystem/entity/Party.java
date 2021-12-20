@@ -23,13 +23,13 @@ public class Party {
 
     private String partyName;
 
-   /*
+
     @OneToMany(mappedBy = "party")
-    private Set<Candidate> candidateSet = new HashSet<Candidate>();
-   */
+    private Set<Candidate> candidateSet = new HashSet<>();
+
 
     @ManyToOne
-    @JoinColumn(name = "party_id", referencedColumnName = "id")
+    //@JoinColumn(name = "party_id", referencedColumnName = "id")
     private Election election;
 
     public Party(int id, String partyName) {
@@ -40,7 +40,8 @@ public class Party {
     public Party(String partyName) {
         this.partyName = partyName;
     }
-           /*
+
+
             public Set<Candidate> getCandidateSet() {
                 return candidateSet;
             }
@@ -48,6 +49,6 @@ public class Party {
             public void addCandidate(Candidate candidate){
                 candidateSet.add(candidate);
             }
-           */
+
 
 }

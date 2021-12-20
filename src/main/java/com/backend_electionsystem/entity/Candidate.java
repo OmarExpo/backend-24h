@@ -1,6 +1,7 @@
 package com.backend_electionsystem.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,7 @@ public class Candidate {
 
 
     @ManyToOne
-    @JoinColumn(name = "candidate_id", referencedColumnName = "id")
+   // @JoinColumn(name = "candidate_id", referencedColumnName = "id")
     private Election election;
 
 
@@ -38,11 +39,10 @@ public class Candidate {
         this.lastName = lastName;
     }
 
-           /*
+           @JsonIgnore
             @ManyToOne
-            @JoinColumn(name = "candidate_id", referencedColumnName = "id")
             private  Party party;
-          */
+
 
 
 }
