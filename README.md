@@ -12,7 +12,12 @@ Here you can find task and project requirements graduation.md
 
 Technology stack:
 
-Spring Boot REST Spring Data JPA MySQL DB Maven JUnit
+Spring Boot 
+REST 
+Spring Data JPA 
+MySQL DB 
+Maven 
+JUnit
 
 How to use this program
 
