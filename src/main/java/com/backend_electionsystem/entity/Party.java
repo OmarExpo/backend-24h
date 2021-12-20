@@ -1,12 +1,14 @@
 package com.backend_electionsystem.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,14 +23,31 @@ public class Party {
 
     private String partyName;
 
-    public Party(String partyName) {
+   /*
+    @OneToMany(mappedBy = "party")
+    private Set<Candidate> candidateSet = new HashSet<Candidate>();
+   */
+
+    @ManyToOne
+    @JoinColumn(name = "party_id", referencedColumnName = "id")
+    private Election election;
+
+    public Party(int id, String partyName) {
+        this.id = id;
         this.partyName = partyName;
     }
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
-    private Set<Candidate> candidateSet = new HashSet<>();
+    public Party(String partyName) {
+        this.partyName = partyName;
+    }
+           /*
+            public Set<Candidate> getCandidateSet() {
+                return candidateSet;
+            }
 
-
-
+            public void addCandidate(Candidate candidate){
+                candidateSet.add(candidate);
+            }
+           */
 
 }
