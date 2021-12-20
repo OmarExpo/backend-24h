@@ -15,27 +15,39 @@ public class CandidateController {
         this.candidateService = candidateService;
     }
     ///
+    /**
+     *
+     * @param
+     * @return
+     *
+     * All CRUD APIs are set
+     */
 
+    // Add bulk of Candidates
     @PostMapping("/candidates")
     List<Candidate> addCandidates(@RequestBody List<Candidate> lists){
         return candidateService.addCandidates(lists);
     }
 
+    // Add/create Candidate
     @PostMapping("/addCandidate")
     public Candidate newCandidate(@RequestBody Candidate candidate){
         return candidateService.addSingleCandidate(candidate);
     }
 
+    // Retrieve bulk of Candidates
     @GetMapping("/allCandidates")
     public List<Candidate> getAllCandidates(){
         return candidateService.getAllCandidates();
     }
 
+    // Fetch Single Candidate
     @GetMapping("/candidate/{id}")
     public Candidate getCandidate(@PathVariable Integer id){
         return candidateService.getCandidate(id);
     }
 
+    // Modify/Edit Existing Candidate
     @PutMapping("/updateCandidate")
     public Candidate updateCandidate(@RequestBody Candidate candidate){
         Candidate existingCandidate = candidateService.getCandidate(candidate.getId());
@@ -49,34 +61,12 @@ public class CandidateController {
         return existingCandidate;
     }
 
-    @DeleteMapping("/deleteCandidate")
+    // Delete Candidate
+    @DeleteMapping("/rmCandidate/{id}")
     public String deleteCandidate(@PathVariable Integer id){
         return candidateService.removeCandidate(id);
     }
 
 
-
-
-
-    /*
-    @PutMapping("/updateElection")
-    public Election updateElection(@RequestBody Election election){
-        Election existingElection = service.getElection(election.getId());
-
-        existingElection.setElectionName(election.getElectionName());
-        existingElection.setCandidates(election.getCandidates());
-        existingElection.setParties(election.getParties());
-
-        service.addElection(existingElection);
-
-        return existingElection;
-    }
-
-    @DeleteMapping("/endElection")
-    public String deleteElection(@PathVariable Integer id){
-        return service.removeElection(id);
-    }
-
-     */
 
 }

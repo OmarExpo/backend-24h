@@ -22,7 +22,7 @@ public class Candidate {
     private String firstName;
     private String lastName;
 
-
+    @JsonIgnore
     @ManyToOne
    // @JoinColumn(name = "candidate_id", referencedColumnName = "id")
     private Election election;

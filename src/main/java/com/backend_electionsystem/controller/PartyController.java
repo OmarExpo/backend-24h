@@ -31,4 +31,17 @@ public class PartyController {
     public Party addParty(@RequestBody Party party){
         return partyService.addParty(party);
     }
+
+    @PutMapping("/updateParty")
+    public Party updateParty(@RequestBody Party party){
+        Party existingParty = partyService.getParty(party.getId());
+
+        existingParty.setPartyName(party.getPartyName());
+        existingParty.setElection(party.getElection());
+        existingParty.setCandidateSet(party.getCandidateSet());
+
+        partyService.addParty(existingParty);
+
+        return existingParty;
+    }
 }
