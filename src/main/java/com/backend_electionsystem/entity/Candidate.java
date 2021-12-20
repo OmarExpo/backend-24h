@@ -22,6 +22,11 @@ public class Candidate {
     private String lastName;
 
 
+    @ManyToOne
+    @JoinColumn(name = "candidate_id", referencedColumnName = "id")
+    private Election election;
+
+
     public Candidate(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
