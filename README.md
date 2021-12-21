@@ -4,11 +4,11 @@
 backend-votingSystemApp
 REST / Spring Boot / JPA / MySQL
 
-This is school project based on Java, Spring Framework that offers a RESTful APIs for voting System.
+The Voter [Spring Boot](https://projects.spring.io/spring-boot/) Service is a RESTful Web Service, backed by MySQL DB, using Spring Boot, Spring Data JPA, Hibernate, H2 (for Unit Testing) and Swagger (Open API docs). It is part of the Voting System API. The Voting System service exposes several HTTP API endpoints, listed below. 
 
 Voting system that allows to fecth / create / edit / delete Candidates (plus Party & VotingSystem APIs as well), in short perform all CRUD operations.
 
-<a href="https://github.com/OmarExpo/backend-electionSystem/blob/main/swagger.jpg">Swagger view here</a> 
+<a href="https://github.com/OmarExpo/backend-electionSystem/blob/main/swagger.jpg">Swagger preview here</a> 
 
 <br/>
 Technology stack:
