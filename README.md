@@ -8,7 +8,7 @@ This is school project based on Java, Spring Framework that offers a RESTful API
 
 Voting system that allows to fecth / create / edit / delete Candidates (plus Party & VotingSystem APIs as well), in short perform all CRUD operations.
 
-<img="https://github.com/OmarExpo/backend-electionSystem/blob/main/swagger.jpg"> 
+<img="https://github.com/OmarExpo/backend-electionSystem/blob/main/swagger.jpg" alt="swagger"> 
 
 <br/>
 Technology stack:
