@@ -6,7 +6,7 @@ import com.backend_electionsystem.service.PartyService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 public class PartyController {
 

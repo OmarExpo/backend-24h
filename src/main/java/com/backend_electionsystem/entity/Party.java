@@ -1,6 +1,7 @@
 package com.backend_electionsystem.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,11 +24,11 @@ public class Party {
 
     private String partyName;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "party")
     private Set<Candidate> candidateSet = new HashSet<>();
 
-
+    @JsonIgnore
     @ManyToOne
     //@JoinColumn(name = "party_id", referencedColumnName = "id")
     private Election election;

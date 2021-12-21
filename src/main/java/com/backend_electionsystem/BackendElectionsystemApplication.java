@@ -12,30 +12,29 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BackendElectionsystemApplication implements CommandLineRunner {
 
-    @Autowired
-    private PartyService partyService;
-    @Autowired
-    private CandidateService candidateService;
+                @Autowired
+                private PartyService partyService;
+                @Autowired
+                private CandidateService candidateService;
 
     public static void main(String[] args) {
         SpringApplication.run(BackendElectionsystemApplication.class, args);
     }
 
-    @Override
-    public void run(String... args) throws Exception {
+                @Override
+                public void run(String... args) throws Exception {
 
-        partyService.addParty(new Party(1, "A - Socialdemokratiet"));
-        partyService.addParty(new Party(2, "C - Det konservative Folkeparti"));
-        partyService.addParty(new Party(3, "F - SF, Socialistisk Folkeparti"));
-        partyService.addParty(new Party(4, "O - Dansk Folkeparti"));
-        partyService.addParty(new Party(5, "V - Venstre, Danmarks Liberale Parti"));
-        partyService.addParty(new Party(6, "Ø - Enhedslisten + De Rød Grønne"));
+                    partyService.addParty(new Party(1, "A - Socialdemokratiet"));
+                    partyService.addParty(new Party(2, "C - Det konservative Folkeparti"));
+                    partyService.addParty(new Party(3, "F - SF, Socialistisk Folkeparti"));
+                    partyService.addParty(new Party(4, "O - Dansk Folkeparti"));
+                    partyService.addParty(new Party(5, "V - Venstre, Danmarks Liberale Parti"));
+                    partyService.addParty(new Party(6, "Ø - Enhedslisten + De Rød Grønne"));
 
-        candidateService.addSingleCandidate(new Candidate(1, "Marcel", "Meijer"));
-        candidateService.addSingleCandidate(new Candidate(2, "Michael", "Kristensen"));
-        candidateService.addSingleCandidate(new Candidate(3, "Per Urban", "Olsen"));
+                    candidateService.addSingleCandidate(new Candidate(1, "Marcel", "Meijer"));
+                    candidateService.addSingleCandidate(new Candidate(2, "Michael", "Kristensen"));
+                    candidateService.addSingleCandidate(new Candidate(3, "Per Urban", "Olsen"));
 
+                }
 
-
-    }
 }
