@@ -7,7 +7,9 @@ REST / Spring Boot / JPA / MySQL
 This is school project based on Java, Spring Framework that offers a RESTful APIs for voting System.
 
 Voting system that allows to fecth / create / edit / delete Candidates (plus Party & VotingSystem APIs as well), in short perform all CRUD operations.
- 
+
+<img="./swagger.jpg"> 
+
 <br/>
 Technology stack:
 
