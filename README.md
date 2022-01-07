@@ -19,11 +19,13 @@ REST
 
 Spring Data JPA 
 
+Hibernate
+
 MySQL DB 
 
 Maven 
 
-JUnit
+JUnit & Mockito
 
 <br/>
 How to use this program
