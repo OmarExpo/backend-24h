@@ -1,7 +1,6 @@
 package com.backend_electionsystem.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,14 +23,16 @@ public class Party {
 
     private String partyName;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "party")
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "party_candidate",
+            joinColumns = @JoinColumn(name = "party_id"),
+            inverseJoinColumns = @JoinColumn(name = "candidate_id")
+    )
     private Set<Candidate> candidateSet = new HashSet<>();
 
-    @JsonIgnore
-    @ManyToOne
-    //@JoinColumn(name = "party_id", referencedColumnName = "id")
-    private Election election;
+
 
     public Party(int id, String partyName) {
         this.id = id;
@@ -43,13 +44,14 @@ public class Party {
     }
 
 
-            public Set<Candidate> getCandidateSet() {
-                return candidateSet;
-            }
+    public Set<Candidate> getCandidateSet() {
+        return candidateSet;
+    }
 
-            public void addCandidate(Candidate candidate){
-                candidateSet.add(candidate);
-            }
+    public void addCandidate(Candidate candidate) {
+        candidateSet.add(candidate);
+    }
+
 
 
 }

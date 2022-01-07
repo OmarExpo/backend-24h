@@ -1,5 +1,6 @@
 package com.backend_electionsystem.service;
 
+import com.backend_electionsystem.entity.Candidate;
 import com.backend_electionsystem.entity.Party;
 import com.backend_electionsystem.exception.ResourceNotFoundException;
 import com.backend_electionsystem.repository.PartyRepository;
@@ -12,8 +13,10 @@ public class PartyService {
 
     private final PartyRepository partyRepository;
 
+
     public PartyService(PartyRepository partyRepository) {
         this.partyRepository = partyRepository;
+
     }
     ///
 
@@ -36,7 +39,15 @@ public class PartyService {
 
     public String deleteParty(Integer partyId){
         partyRepository.deleteById(partyId);
-        return "Party with id: "+ partyId + " not found";
+        return "Party with id: "+ partyId + " deleted successfully!";
     }
+
+    public Party addCandidate(Integer partyId, Candidate candidate) {
+        Party party = partyRepository.findById(partyId).get();
+        party.addCandidate(candidate);
+       return partyRepository.save(party);
+    }
+
+
 
 }

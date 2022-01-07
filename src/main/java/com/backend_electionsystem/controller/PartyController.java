@@ -27,21 +27,43 @@ public class PartyController {
         return partyService.getParty(id);
     }
 
+
     @PostMapping("/addParty")
     public Party addParty(@RequestBody Party party){
         return partyService.addParty(party);
     }
+
+    @PostMapping("/parties")
+    public List<Party> addParties(@RequestBody List<Party> partyList){
+        return partyService.addParties(partyList);
+    }
+
 
     @PutMapping("/updateParty")
     public Party updateParty(@RequestBody Party party){
         Party existingParty = partyService.getParty(party.getId());
 
         existingParty.setPartyName(party.getPartyName());
-        existingParty.setElection(party.getElection());
+        // existingParty.setElection(party.getElection());
         existingParty.setCandidateSet(party.getCandidateSet());
 
         partyService.addParty(existingParty);
 
         return existingParty;
     }
+
+    @PutMapping("/candidateToParty/{partyId}")
+    public Party addCandidateToParty(@PathVariable Integer partyId, @RequestBody Candidate candidate){
+        Party party = partyService.getParty(partyId);
+        party.addCandidate(candidate);
+        partyService.addParty(party);
+        return party;
+
+    }
+
+    @DeleteMapping("/deleteParty/{partyId}")
+    public String deleteParty(@PathVariable int partyId){
+        return partyService.deleteParty(partyId);
+    }
+
 }

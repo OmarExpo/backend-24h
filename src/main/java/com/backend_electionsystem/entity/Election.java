@@ -19,11 +19,16 @@ public class Election {
     private int id;
     private String electionName;
 
-    @OneToMany(mappedBy = "election")
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "election_party",
+            joinColumns = @JoinColumn(name = "election_id"),
+            inverseJoinColumns = @JoinColumn(name = "party_id")
+    )
     private Set<Party> parties = new HashSet<>();
 
-    @OneToMany(mappedBy = "election")
-    private Set<Candidate> candidates = new HashSet<>();
+
 
     public Election(int id, String electionName) {
         this.id = id;
@@ -34,13 +39,6 @@ public class Election {
         return parties;
     }
 
-    public Set<Candidate> getCandidates() {
-        return candidates;
-    }
-
-    public void addCandidate(Candidate candidate){
-        candidates.add(candidate);
-    }
 
     public void addParty(Party party){
         parties.add(party);

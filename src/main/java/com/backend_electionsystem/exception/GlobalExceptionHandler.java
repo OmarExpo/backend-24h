@@ -11,13 +11,14 @@ import java.util.Date;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    // handling specific exception
+    // handling specific ResourceNotFoundException exception
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<?> resourceNotFoundHandling(ResourceNotFoundException exception, WebRequest request){
         com.backend_electionsystem.exception.ErrorDetails errorDetails =
                 new com.backend_electionsystem.exception.ErrorDetails(new Date(), exception.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
+
 
     // handling global exception
     @ExceptionHandler(Exception.class)

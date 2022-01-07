@@ -1,28 +1,26 @@
 package com.backend_electionsystem.controller;
 
-import com.backend_electionsystem.entity.Candidate;
+
 import com.backend_electionsystem.entity.Election;
 import com.backend_electionsystem.entity.Party;
-import com.backend_electionsystem.service.CandidateService;
 import com.backend_electionsystem.service.ElectionService;
 import com.backend_electionsystem.service.PartyService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @CrossOrigin
 @RestController
 public class ElectionController {
 
-    private ElectionService electionService;
-    private PartyService partyService;
-    private CandidateService candidateService;
+    private final ElectionService electionService;
+    private final PartyService partyService;
+    //private CandidateService candidateService;
 
-    public ElectionController(ElectionService electionService, PartyService partyService, CandidateService candidateService) {
+    public ElectionController(ElectionService electionService, PartyService partyService) {
         this.electionService = electionService;
         this.partyService = partyService;
-        this.candidateService = candidateService;
+        // this.candidateService = candidateService;
     }
     ///
 
@@ -61,7 +59,7 @@ public class ElectionController {
         Election existingElection = electionService.getElection(election.getId());
 
         existingElection.setElectionName(election.getElectionName());
-        existingElection.setCandidates(election.getCandidates());
+        // existingElection.setCandidates(election.getCandidates());
         existingElection.setParties(election.getParties());
 
         electionService.addElection(existingElection);
@@ -75,23 +73,40 @@ public class ElectionController {
     }
 
     // Add Party to Election
-    @PutMapping("/election/{electionId}/candidate/{candidateId}/party/{partyId}")
+    @PutMapping("/addPartyToElection/{electionId}/party/{partyId}")
     public Election addPartyToElection(
             @PathVariable Integer electionId,
-            @PathVariable Integer partyId,
-            @PathVariable Integer candidateId
+            @PathVariable Integer partyId
     ){
         Election election = electionService.getElection(electionId);
         Party party = partyService.getParty(partyId);
-        Candidate candidate = candidateService.getCandidate(candidateId);
-
-        party.addCandidate(candidate);
 
         election.addParty(party);
 
-        return electionService.addElection(election);
+        electionService.addElection(election);
+        return election;
     }
 
-    // Add Candidate to Party
+      /*
+        @PutMapping("/election/{electionId}/party/{partyId}/candidate/{candidateId}")
+        public Election addPartyToElection(
+                @PathVariable Integer electionId,
+                @PathVariable Integer partyId,
+                @PathVariable Integer candidateId
+        ){
+            Election election = electionService.getElection(electionId);
+            Party party = partyService.getParty(partyId);
+            Candidate candidate = candidateService.getCandidate(candidateId);
+
+            party.addCandidate(candidate);
+
+            election.addParty(party);
+
+            electionService.addElection(election);
+            return election;
+        }
+      */
+
+
 
 }

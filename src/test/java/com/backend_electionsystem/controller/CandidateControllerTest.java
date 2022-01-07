@@ -2,8 +2,6 @@ package com.backend_electionsystem.controller;
 
 import com.backend_electionsystem.entity.Candidate;
 import com.backend_electionsystem.service.CandidateService;
-import com.backend_electionsystem.service.ElectionService;
-import com.backend_electionsystem.service.PartyService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
@@ -23,20 +22,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class CandidateControllerTest {
 
     // Testing Rest APis using WebMvcTest and MockMvc Annotations - Testing in SpringBoot
+    // Web layer test in isolation
 
-    @Autowired
-    CandidateController controller;
-    @Autowired
-    ElectionService electionService;
-    @Autowired
-    PartyService partyService;
+    @Autowired()
+   CandidateController candidateController;
 
     @Autowired
     MockMvc mvc;
 
     @MockBean
     private CandidateService candidateService;
-
 
     @Test
     void newCandidate() throws Exception {

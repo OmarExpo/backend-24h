@@ -1,13 +1,12 @@
-package com.backend_electionsystem;
+package com.backend_electionsystem.config;
 
 import org.h2.server.web.WebServlet;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@
-
-        Configuration
+@Configuration
 public class WebConfiguration {
     @Bean
     ServletRegistrationBean h2ServletRegistration() {
@@ -15,4 +14,6 @@ public class WebConfiguration {
         registrationBean.addUrlMappings("/console/*");
         return registrationBean;
     }
+
+
 }
